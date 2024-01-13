@@ -23,7 +23,7 @@ public class UserController {
 
     @GetMapping("/")
     public String home() {
-        return "home";
+        return "../static/home";
     }
 
     @GetMapping("/users")
@@ -60,5 +60,10 @@ public class UserController {
     public String updateUser(User user){
         userService.updateUser(user);
         return "redirect:/users";
+    }
+
+    @GetMapping("/styles/style.css")
+    public String style(Model model) {
+        return "../styles/style.css";
     }
 }

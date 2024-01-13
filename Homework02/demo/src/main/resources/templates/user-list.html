@@ -1,34 +1,35 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<link rel="stylesheet" href="../styles/style.css">
 <head>
     <meta charset="UTF-8">
     <title>Users</title>
 </head>
 <body>
-<div th:switch="${users}">
-    <h2 th:case="null">No users found!</h2>
-    <div th:case="*">
-        <h2>Users</h2>
-        <table>
+<div th:switch="${users}" class="container">
+    <h2 th:case="null" class="info">No users found!</h2>
+    <div th:case="*" class="users_box">
+        <h2 class="title">Users</h2>
+        <table class="table">
             <thead>
-            <tr>
+            <tr class="table_head">
                 <th>Id</th>
                 <th>First name</th>
                 <th>Last name</th>
             </tr>
             </thead>
             <tbody>
-            <tr th:each="user : ${users}">
+            <tr th:each="user : ${users}" class="users">
                 <td th:text="${user.id}"></td>
                 <td th:text="${user.firstName}"></td>
                 <td th:text="${user.lastName}"></td>
-                <td><a th:href="@{user-update/{id}(id=${user.id})}">Edit</a></td>
-                <td><a th:href="@{user-delete/{id}(id=${user.id})}">Delete</a></td>
+                <td class="edit_button user_button"><a th:href="@{user-update/{id}(id=${user.id})}">Edit</a></td>
+                <td class="delete_button user_button"><a th:href="@{user-delete/{id}(id=${user.id})}">Delete</a></td>
             </tr>
             </tbody>
         </table>
     </div>
-    <p><a href="/user-create">Create user</a></p>
+    <p class="create"><a href="/user-create">Create user</a></p>
 </div>
 </body>
 </html>
