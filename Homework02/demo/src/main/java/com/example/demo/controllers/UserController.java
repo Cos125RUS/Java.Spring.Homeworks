@@ -9,7 +9,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
-import java.lang.reflect.Method;
 import java.util.List;
 
 @Controller
@@ -60,10 +59,5 @@ public class UserController {
     public String updateUser(User user){
         userService.updateUser(user);
         return "redirect:/users";
-    }
-
-    @GetMapping("/styles/style.css")
-    public String style(Model model) {
-        return "../styles/style.css";
     }
 }
