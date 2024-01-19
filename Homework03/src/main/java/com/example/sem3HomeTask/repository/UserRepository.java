@@ -1,22 +1,42 @@
 package com.example.sem3HomeTask.repository;
 
 import com.example.sem3HomeTask.domain.User;
-import org.springframework.stereotype.Component;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.core.RowMapper;
+import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;
 import java.util.List;
 
-@Component
+@Repository
 public class UserRepository {
+    private List<User> users;
+    private final JdbcTemplate jdbc;
 
-    public List<User> getUsers() {
-        return users;
+    public UserRepository(JdbcTemplate jdbc) {
+        this.jdbc = jdbc;
+        users = findAll();
     }
 
-    public void setUsers(List<User> users) {
-        this.users = users;
+    public List<User> findAll() {
+        String sql = "SELECT * FROM userTable";
+
+        RowMapper<User> userRowMapper = (r, i) -> {
+            User rowObject = new User();
+            rowObject.setId(r.getLong("id"));
+            rowObject.setName(r.getString("name"));
+            rowObject.setAge(r.getInt("age"));
+            rowObject.setEmail(r.getString("email"));
+            return rowObject;
+        };
+
+        return jdbc.query(sql, userRowMapper);
     }
 
-    private List<User> users = new ArrayList<>();
-
+    public User save(User user) {
+        String sql = "INSERT INTO userTable VALUES (DEFAULT, ?, ?, ?)";
+        jdbc.update(sql, user.getName(), user.getAge(), user.getEmail());
+        return user;
+    }
 }

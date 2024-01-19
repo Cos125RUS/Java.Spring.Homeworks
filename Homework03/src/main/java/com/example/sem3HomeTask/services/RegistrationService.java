@@ -14,11 +14,9 @@ public class RegistrationService {
     private DataProcessingService dataProcessingService;
 
 
-
     public DataProcessingService getDataProcessingService() {
         return dataProcessingService;
     }
-
 
     /**
      * Процесс создания нового пользователя
@@ -28,6 +26,14 @@ public class RegistrationService {
      */
     public void processRegistration(String name, int age, String email){
         User user = userService.createUser(name, age, email);
+        processRegistration(user);
+    }
+
+    /**
+     * Добавление нового пользователя
+     * @param user
+     */
+    public void processRegistration(User user){
         notificationService.notifyUser(user); // Перенёс из UserService
         dataProcessingService.addUserToList(user);
     }

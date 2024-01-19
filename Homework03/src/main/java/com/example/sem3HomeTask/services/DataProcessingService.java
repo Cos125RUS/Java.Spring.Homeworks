@@ -40,6 +40,7 @@ public class DataProcessingService {
     }
 
     public void addUserToList(User user) {
-        repository.getUsers().add(user);
+        repository.save(user);
+//        repository.getUsers().add(user);
     }
 }

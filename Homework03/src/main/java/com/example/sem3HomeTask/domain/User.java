@@ -2,6 +2,7 @@ package com.example.sem3HomeTask.domain;
 
 public class User {
 
+    private long id;
     private String name;
     private int age;
     private String email;
@@ -28,5 +29,23 @@ public class User {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", age=" + age +
+                ", email='" + email + '\'' +
+                '}';
     }
 }
