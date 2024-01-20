@@ -1,0 +1,107 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+
+a {
+    text-decoration: none;
+}
+
+body {
+    width: 100vw;
+}
+
+.title {
+    text-align: center;
+}
+
+.index_btn {
+    font-size: 36px;
+    border: 1px solid brown;
+    background: brown;
+    color: aliceblue;
+    border-radius: 15px;
+    padding: 10px;
+}
+
+.button {
+    min-width: 100vw;
+    margin-top: 50px;
+    display: flex;
+    max-width: 350px;
+    justify-content: center;
+}
+
+.new_button {
+    font-size: 20px;
+    border: 1px solid brown;
+    background: brown;
+    color: aliceblue;
+    border-radius: 15px;
+    padding: 8px;
+}
+
+.table {
+    width: 100vw;
+    padding-top: 20px;
+}
+
+.table_row {
+    width: 100vw;
+    display: flex;
+
+}
+
+.table_date {
+    width: 20vw;
+    display: flex;
+    justify-content: center;
+}
+
+.table_message {
+    width: 80vw;
+    display: flex;
+    justify-content: center;
+}
+
+.table_text {
+    font-size: 20px;
+
+}
+
+.form {
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+}
+
+.text_area_container {
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    padding-bottom: 25px;
+}
+
+.text_area {
+    min-width: 500px;
+    min-height: 200px;
+    max-width: 80%;
+    max-height: 500px;
+    padding: 10px;
+    font-style: italic;
+}
+
+.text_area::placeholder {
+    padding-top: 5px;
+    padding-left: 15px;
+}
+
+.add_button_container {
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+}
+
+.add_button:hover {
+    cursor: pointer;
+}

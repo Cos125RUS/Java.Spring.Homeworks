@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="/css/style.css">
+    <!-- <link rel="stylesheet" href="../static\css\style.css"> -->
+    <title>Add new Node</title>
+</head>
+
+<body>
+    <form action="/nodes" method="post" class="form">
+        <div class="text_area_container">
+            <textarea cols="30" rows="10" placeholder="Вводи свою заметку, друг" name="message" type="text" class="text_area"></textarea>
+        </div>
+        <div class="add_button_container">
+            <input type="submit" value="Создать заметку" class="new_button add_button">
+        </div>
+    </form>
+</body>
+
+</html>
