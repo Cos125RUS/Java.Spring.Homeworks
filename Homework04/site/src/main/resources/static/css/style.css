@@ -15,6 +15,11 @@ body {
     text-align: center;
 }
 
+.title_nodes {
+    text-align: start;
+    margin-left: 7vw;
+}
+
 .index_btn {
     font-size: 36px;
     border: 1px solid brown;
@@ -33,12 +38,18 @@ body {
 }
 
 .new_button {
+    box-sizing: border-box;
     font-size: 20px;
     border: 1px solid brown;
     background: brown;
     color: aliceblue;
     border-radius: 15px;
     padding: 8px;
+    margin-left: 7vw;
+}
+
+.button_nodes {
+    justify-content: start;
 }
 
 .table {
@@ -47,9 +58,8 @@ body {
 }
 
 .table_row {
-    width: 100vw;
+    width: 99vw;
     display: flex;
-
 }
 
 .table_date {
@@ -61,12 +71,11 @@ body {
 .table_message {
     width: 80vw;
     display: flex;
-    justify-content: center;
+    justify-content: start;
 }
 
 .table_text {
     font-size: 20px;
-
 }
 
 .form {

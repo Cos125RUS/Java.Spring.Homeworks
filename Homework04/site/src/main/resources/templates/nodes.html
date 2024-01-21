@@ -4,20 +4,26 @@
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="/css/style.css">
-    <!-- <link rel="stylesheet" href="../static\css\style.css"> -->
+    <link rel="stylesheet" href="../static\css\style.css">
     <title>Nodes</title>
 </head>
 
 <body>
-    <h1 class="title">Заметки за <span th:text="${date}"></span>:</h1>
+    <h1 class="title_nodes">Заметки за <span th:text="${date}"></span>:</h1>
     <table class="table">
+        <thead>
+            <tr class="table_row">
+                <th class="table_date table_text">Время</th>
+                <th class="table_message table_text">Запись</th>
+            </tr>
+        </thead>
         <tr th:each="node : ${nodesList}" class="table_row">
             <td th:text="${node.creationTime}" class="table_date table_text">22:10</td>
             <td th:text="${node.message}" class="table_message table_text">Создаю веб-приложение</td>
         </tr>
     </table>
     <br>
-    <div class="button">
+    <div class="button button_nodes">
         <a href="add" class="new_button">Новая заметка</a>
     </div>
 </body>
