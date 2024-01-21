@@ -1,0 +1,11 @@
+server:
+  error:
+    whitelabel:
+      enabled: false
+
+repository:
+  requests:
+    selectAll: "SELECT * FROM userTable"
+    save: "INSERT INTO userTable VALUES (DEFAULT, ?, ?)"
+    deleteById: "DELETE FROM userTable WHERE id=?"
+    update: "UPDATE userTable SET firstName=?, lastName=? WHERE id=?"

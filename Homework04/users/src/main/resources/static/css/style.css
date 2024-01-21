@@ -1,0 +1,59 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+a {
+    text-decoration: none;
+}
+
+.info {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.title {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.table {
+    width: 50vw;
+    margin-left: 25vw;
+    border: 1px solid #000;
+}
+
+.table_head {
+    display: flex;
+    padding-left: 10px;
+    padding-right: 10px;
+    justify-content: space-between;
+    padding-bottom: 10px;
+}
+
+.create {
+    display: flex;
+    justify-content: center;
+    margin-top: 15px;
+    font-size: 25px;
+}
+
+.users {
+    display: flex;
+    justify-content: space-between;
+    position: relative;    padding-left: 10px;
+    padding-right: 10px;
+
+}
+
+.user_button {
+    position: absolute;
+}
+
+.edit_button {
+    right: -50px;
+}
+
+.delete_button {
+    right: -100px;
+}
