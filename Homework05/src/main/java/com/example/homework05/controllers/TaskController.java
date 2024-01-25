@@ -32,7 +32,7 @@ public class TaskController {
 
     @PutMapping("/{id}")
     public Task updateTaskStatus(@PathVariable Long id, @RequestBody Task task){
-        return taskService.updateById(id, new Task(task));
+        return taskService.updateById(id, task);
     }
 
     @DeleteMapping("/{id}")

@@ -22,8 +22,13 @@ public class Task {
     }
 
     public Task(Task task) {
-        this.description = task.getDescription();
-        this.status = TaskStatus.NOT_STARTED;
-        this.creation = LocalDateTime.now();
+        if (task.getDescription() != null)
+            this.description = task.getDescription();
+        if (task.status == null)
+            this.status = TaskStatus.NOT_STARTED;
+        else this.status = task.getStatus();
+        if (task.creation == null)
+            this.creation = LocalDateTime.now();
+        else this.creation = task.creation;
     }
 }

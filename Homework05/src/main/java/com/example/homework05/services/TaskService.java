@@ -30,8 +30,7 @@ public class TaskService {
     @Transactional
     public Task updateById(Long id, Task task) {
         taskRepository.updateTaskById(task.getDescription(), task.getStatus(), id);
-        task.setId(id);
-        return task;
+        return taskRepository.findById(id).get();
     }
 
     public void deleteById(Long id) {
