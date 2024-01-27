@@ -6,7 +6,15 @@ import org.springframework.stereotype.Repository;
 
 import java.util.Optional;
 
+/**
+ * Интерфейс репозитория заметок
+ */
 @Repository
 public interface NoteRepository extends JpaRepository<Note, Long> {
+    /**
+     * Поиск по id
+     * @param id идентификатор заметки
+     * @return опциональная заметка=)
+     */
     Optional<Note> findById(Long id);
 }

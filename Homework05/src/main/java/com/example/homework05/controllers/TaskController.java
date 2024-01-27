@@ -4,10 +4,8 @@ import com.example.homework05.domain.Task;
 import com.example.homework05.domain.TaskStatus;
 import com.example.homework05.services.TaskService;
 import lombok.AllArgsConstructor;
-import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.web.bind.annotation.*;
 
-import javax.naming.Context;
 import java.util.List;
 
 @RestController

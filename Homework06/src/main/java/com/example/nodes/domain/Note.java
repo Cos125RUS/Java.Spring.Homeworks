@@ -8,6 +8,9 @@ import lombok.RequiredArgsConstructor;
 
 import java.time.LocalDateTime;
 
+/**
+ * Заметка
+ */
 @Entity
 @AllArgsConstructor
 @NoArgsConstructor
