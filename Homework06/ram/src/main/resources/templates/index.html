@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="../static/css/style.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="content_container">
+        <header></header>
+        <main class="main container">
+            <h1 class="title">The Rick and Morty Characters</h1>
+            <div class="card_container">
+                <div class="card" th:each="character : ${charactersList}">
+                    <section class="card__view">
+                        <img th:src="${character.image}" src="https://rickandmortyapi.com/api/character/avatar/22.jpeg" alt="photo" class="photo">
+                    </section>
+                    <section class="card__info">
+                        <div class="name_container">
+                            <h3 class="name" th:text="${character.name}">Name</h3>
+                        </div>
+                        <div class="characters">
+                            <p class="status" th:text="'Status: ' + ${character.status}">Status: status</p>
+                            <p class="species" th:text="'Species: ' + ${character.species}">Species</p>
+                            <p class="type" th:text="'Type: ' + ${character.type}">Type</p>
+                            <p class="gender" th:text="'Gender: ' + ${character.gender}">Gender</p>
+                        </div>
+                    </section>
+                </div>
+            </div>
+            <nav class="navigation">
+                <a th:href="${prev}" class="navigation__prev btn btn-secondary"></a>
+                <a th:href="${next}" class="navigation__next btn btn-secondary"></a>
+            </nav>
+        </main>
+        <footer></footer>
+    </div>
+</body>
+
+</html>
