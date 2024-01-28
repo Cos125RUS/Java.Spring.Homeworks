@@ -18,19 +18,21 @@ a {
   text-decoration: none;
 }
 
+.content_container {
+  background: #090909;
+  min-height: 100vh;
+}
+
 .main {
-  padding-top: 50px;
   padding-bottom: 50px;
 }
 
 .title {
   text-align: center;
   font-size: 5em;
-  margin-bottom: 45px;
-}
-
-.content_container {
-  background: #d1b5b5;
+  margin-bottom: 50px;
+  padding-top: 50px;
+  color: aliceblue;
 }
 
 .card_container {
@@ -44,6 +46,11 @@ a {
 .card {
   flex-grow: 1;
   flex-basis: 25%;
+  transition: transform 0.3s !important;
+}
+.card:hover {
+  cursor: pointer;
+  transform: scale(1.04);
 }
 .card > * {
   background: #534f4f;
@@ -87,4 +94,9 @@ a {
 }
 .navigation__prev:hover, .navigation__next:hover {
   cursor: pointer;
+}
+
+.profile {
+  margin-left: 5vw;
+  margin-right: 5vw;
 }/*# sourceMappingURL=style.css.map */
