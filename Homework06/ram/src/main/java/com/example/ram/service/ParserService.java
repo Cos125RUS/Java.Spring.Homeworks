@@ -8,6 +8,8 @@ import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 /**
@@ -44,7 +46,13 @@ public class ParserService {
      */
     public List<Episode> getEpisodes(List<String> uslEpisodes) {
         List<Episode> episodes = new ArrayList<>();
-        uslEpisodes.forEach(url -> episodes.add(serviceApi.getEpisode(url)));
+        uslEpisodes.forEach(url -> new Thread(() -> episodes.add(serviceApi.getEpisode(url))).start());
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+        Collections.sort(episodes);
         return episodes;
     }
 }

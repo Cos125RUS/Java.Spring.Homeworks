@@ -10,8 +10,8 @@ import java.util.List;
  * интерфейс для работы с апи Рика и Морти
  */
 public interface ServiceApi {
-    public Characters getAllCharacters(String path);
-    public Result getResult(String path);
-    public Episode getEpisode(String path);
+    Characters getAllCharacters(String path);
+    Result getResult(String path);
+    Episode getEpisode(String path);
 
 }
