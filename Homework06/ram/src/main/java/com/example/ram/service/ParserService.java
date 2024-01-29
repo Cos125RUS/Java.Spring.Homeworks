@@ -11,6 +11,9 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.TimeUnit;
 
 /**
  * Преобразователь пути
@@ -23,8 +26,9 @@ public class ParserService {
 
     /**
      * Создаёт ссылки на следующую и предыдущую страницы
+     *
      * @param allCharacters список персонажей
-     * @param path ссылка на путь на сайте
+     * @param path          ссылка на путь на сайте
      * @return массив ссылок
      */
     public String[] getPages(Characters allCharacters, String path) {
@@ -41,18 +45,21 @@ public class ParserService {
 
     /**
      * Получает данные об эпизодах из ссылок api
-     * @param uslEpisodes список ссылок на эпизоды
+     *
+     * @param urlEpisodes список ссылок на эпизоды
      * @return список информации об эпизодах
      */
-    public List<Episode> getEpisodes(List<String> uslEpisodes) {
+    public List<Episode> getEpisodes(List<String> urlEpisodes) {
         List<Episode> episodes = new ArrayList<>();
-        uslEpisodes.forEach(url -> new Thread(() -> episodes.add(serviceApi.getEpisode(url))).start());
+        ExecutorService executorService = Executors.newCachedThreadPool();
+        urlEpisodes.forEach(url -> executorService.execute(() -> episodes.add(serviceApi.getEpisode(url))));
+        executorService.shutdown();
         try {
-            Thread.sleep(1000);
+            if (executorService.awaitTermination(1, TimeUnit.MINUTES))
+                Collections.sort(episodes);
+            return episodes;
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
         }
-        Collections.sort(episodes);
-        return episodes;
     }
 }
