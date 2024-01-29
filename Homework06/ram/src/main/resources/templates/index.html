@@ -19,7 +19,7 @@
         </header>
         <main class="main container">
             <div class="card_container">
-                <div class="card" th:each="character : ${charactersList}">
+                <a class="card" th:each="character : ${charactersList}" th:href="@{'http://localhost:8080/character/'+${character.id}}" >
                     <section class="card__view">
                         <img th:src="${character.image}" src="https://rickandmortyapi.com/api/character/avatar/22.jpeg"
                             alt="photo" class="photo">
@@ -35,7 +35,7 @@
                             <p class="gender" th:text="'Gender: ' + ${character.gender}">Gender</p>
                         </div>
                     </section>
-                </div>
+                </a>
             </div>
             <nav class="navigation">
                 <a th:href="${prev}" class="navigation__prev btn btn-secondary"></a>

@@ -15,7 +15,11 @@
 }
 
 a {
-    text-decoration: none;
+    text-decoration: none !important;
+}
+
+li {
+    display: inline-block;
 }
 
 .content_container {
@@ -49,7 +53,6 @@ a {
     transition: transform 0.3s !important;
 
     &:hover {
-        cursor: pointer;
         transform: scale(1.04);
     }
 

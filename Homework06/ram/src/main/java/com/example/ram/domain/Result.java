@@ -3,6 +3,7 @@ package com.example.ram.domain;
 import lombok.Data;
 
 import java.util.Date;
+import java.util.List;
 
 /**
  * Данные о персонаже
@@ -18,4 +19,5 @@ public class Result {
     private String image;
     private String url;
     private Date created;
+    private List<String> episode;
 }

@@ -15,7 +15,11 @@
 }
 
 a {
-  text-decoration: none;
+  text-decoration: none !important;
+}
+
+li {
+  display: inline-block;
 }
 
 .content_container {
@@ -49,7 +53,6 @@ a {
   transition: transform 0.3s !important;
 }
 .card:hover {
-  cursor: pointer;
   transform: scale(1.04);
 }
 .card > * {
@@ -97,6 +100,61 @@ a {
 }
 
 .profile {
-  margin-left: 5vw;
-  margin-right: 5vw;
+  margin-left: 10vw;
+  margin-right: 10vw;
+  color: #fff !important;
+  background: #534f4f;
+  border-radius: 15px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+.profile__top {
+  display: flex;
+  justify-content: space-around;
+  padding-bottom: 50px;
+}
+.profile__photo {
+  height: 100%;
+}
+.profile__photo-container {
+  margin: 15px;
+  background: #fff;
+  height: 50vh;
+}
+.profile__description {
+  min-width: 30vw;
+}
+.profile__description > ul {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  justify-content: center;
+  gap: 10px;
+  height: 100%;
+}
+.profile__description > ul > li {
+  font-size: 1.5em;
+}
+.profile__episodes {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 30px;
+}
+.profile__episodes-title {
+  font-size: 2em;
+  padding-bottom: 25px;
+}
+.profile__episodes-line td {
+  padding-left: 25px;
+  padding-right: 25px;
+  padding-top: 10px;
+  font-size: 1.5em;
+}
+.profile__bottom {
+  margin-bottom: 50px;
+}
+
+.attribute {
+  color: #cff0f4;
 }/*# sourceMappingURL=style.css.map */

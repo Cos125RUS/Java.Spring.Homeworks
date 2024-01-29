@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 
 <head>
     <meta charset="UTF-8">
@@ -15,14 +15,36 @@
             <h1 class="title">The Rick and Morty Characters</h1>
         </header>
         <main class="main">
-            <div class="profile">
+            <article class="profile">
                 <section class="profile__top">
-
+                    <figure class="profile__photo-container">
+                        <img th:src="${result.image}" alt="photo" class="profile__photo">
+                    </figure>
+                    <figcaption class="profile__description">
+                        <ul>
+                            <li>Status: <b><span th:text="${result.status}" class="attribute"></span></b></li>
+                            <li>Species: <b><span th:text="${result.species}" class="attribute"></span></b></li>
+                            <li>Type: <b></b><span th:text="${result.type}" class="attribute"></span></b></li>
+                            <li>Gender: <b></b><span th:text="${result.gender}" class="attribute"></span></b></li>
+                            <li>Created at: <b></b><span th:text="${result.created}" class="attribute"></span></b></li>
+                        </ul>
+                    </figcaption>
                 </section>
                 <section class="profile__bottom">
-                    
+                    <table class="profile__episodes">
+                        <thead>
+                            <tr><th class="profile__episodes-title">Episodes:</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr th:each="episode: ${episodes}" class="profile__episodes-line">
+                                <td th:text="${episode.episode}">episode</td>
+                                <td th:text="${episode.air_date}">air_date</td>
+                                <td th:text="${episode.name}">name</td>
+                            </tr>
+                        </tbody>
+                    </table>
                 </section>
-            </div>
+            </article>
         </main>
         <footer></footer>
     </div>
