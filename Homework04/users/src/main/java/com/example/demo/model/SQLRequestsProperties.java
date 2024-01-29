@@ -3,14 +3,13 @@ package com.example.demo.model;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import org.springframework.boot.context.properties.ConfigurationProperties;
-import org.springframework.boot.context.properties.ConfigurationPropertiesScan;
 import org.springframework.validation.annotation.Validated;
 
 /**
  * SQL запросы, хранимые в application.yaml
  */
 @ConfigurationProperties(prefix = "repository.requests")
-@ConfigurationPropertiesScan
+//@ConfigurationPropertiesScan
 @Data
 @Validated
 @AllArgsConstructor
