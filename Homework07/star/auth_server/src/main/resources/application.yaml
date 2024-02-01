@@ -1,0 +1,40 @@
+
+server:
+  port: 9000
+
+logging:
+  level:
+    root: INFO
+    org.springframework.web: INFO
+    org.springframework.security: INFO
+    org.springframework.security.oauth2: INFO
+
+#server:
+#  port: 18080
+#logging:
+#  level:
+#    org.springframework.security: trace
+#
+#spring:
+#  security:
+#    oauth2:
+#      authorizationserver:
+#        client:
+#          oidc-client:
+#            registration:
+#              client-id: oidc-client
+#              client-secret: "{noop}secret"
+#              client-authentication-methods:
+#                - "client_secret_basic"
+#              authorization-grant-types:
+#                - "authorization_code"
+#                - "refresh_token"
+#              redirect-uris:
+##                - "http://127.0.0.1:28080/login/oauth2/code/oidc-client"
+#                - "http://127.0.0.1:28080/"
+#              post-logout-redirect-uris:
+#                - "http://127.0.0.1:28080/"
+#              scopes:
+#                - "openid"
+#                - "profile"
+#            require-authorization-consent: true

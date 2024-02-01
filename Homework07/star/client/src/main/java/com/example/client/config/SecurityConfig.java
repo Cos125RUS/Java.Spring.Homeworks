@@ -14,7 +14,6 @@
 //    @Bean
 //    public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
 //        http
-//                // ...
 //                .oauth2Client(Customizer.withDefaults());
 //        return http.build();
 //    }

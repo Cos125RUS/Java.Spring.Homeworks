@@ -1,0 +1,45 @@
+server:
+  port: 8080
+
+logging:
+  level:
+    root: INFO
+    org.springframework.web: DEBUG
+    org.springframework.security: DEBUG
+    org.springframework.security.oauth2: DEBUG
+
+spring:
+  security:
+    oauth2:
+      client:
+        registration:
+          messages-client-client-credentials:
+            provider: spring
+            client-id: messages-client
+            client-secret: secret
+            authorization-grant-type: client_credentials
+            client-name: messages-client-client-credentials
+            scope: messages.read
+        provider:
+          spring:
+            issuer-uri: http://localhost:9000
+
+#server:
+#  port: 28080
+#
+#spring:
+#  security:
+#    oauth2:
+#      client:
+#        registration:
+#          oidc-client:
+#            provider: my-auth-server
+#            client-id: oidc-client
+#            client-secret: "{noop}secret"
+#            authorization-grant-types:
+#            - "authorization_code"
+#            - "refresh_token"
+#            scope: openid,profile
+#        provider:
+#          my-auth-server:
+#            issuer-uri: http://localhost:18080

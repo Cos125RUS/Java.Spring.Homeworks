@@ -21,7 +21,7 @@ public class MessageController {
         return webClient
                 .get()
                 .uri("http://127.0.0.1:18090/messages")
-                .attributes(clientRegistrationId("message-client-client-credentials"))
+                .attributes(clientRegistrationId("messages-client-client-credentials"))
                 .retrieve()
                 .bodyToMono(new ParameterizedTypeReference<List<Message>>() {})
                 .block();
