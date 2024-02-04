@@ -19,4 +19,5 @@ import org.springframework.validation.annotation.Validated;
 public class Links {
     private final String characters;
     private final String path;
+    private final String transfer;
 }

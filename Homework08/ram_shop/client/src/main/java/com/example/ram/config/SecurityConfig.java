@@ -21,7 +21,7 @@ public class SecurityConfig {
 		http
 		.authorizeHttpRequests((authorize) -> authorize
 			.requestMatchers("/css/**", "/", "/page/**", "/character/**").permitAll()
-			.requestMatchers("/watch/**").hasAnyRole("USER")
+			.requestMatchers("/watch/**", "/buy/**").hasAnyRole("USER")
 			.anyRequest().authenticated()
 		)
 		.formLogin(login -> login

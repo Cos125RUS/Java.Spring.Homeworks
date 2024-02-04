@@ -4,6 +4,7 @@ server:
 links:
   path: http://localhost:8080/page/
   characters: https://rickandmortyapi.com/api/character
+  transfer: http://localhost:8081/transfer
 
 spring:
   devtools:

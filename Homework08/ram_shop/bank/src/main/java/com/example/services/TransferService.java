@@ -16,7 +16,7 @@ public class TransferService {
   private final AccountRepository accountRepository;
 
   @Transactional
-  public void transferMoney(long idSender, long idReceiver, BigDecimal amount) {
+  public boolean transferMoney(long idSender, long idReceiver, BigDecimal amount) {
     Account sender = accountRepository.findAccountById(idSender);
     Account receiver = accountRepository.findAccountById(idReceiver);
 
@@ -26,7 +26,8 @@ public class TransferService {
     accountRepository.changeAmount(idSender, senderNewAmount);
     accountRepository.changeAmount(idReceiver, receiverNewAmount);
     //Часть 2
-    throw new RuntimeException("Oh no! Something went wrong!");
+//    throw new RuntimeException("Oh no! Something went wrong!");
+    return true;
   }
 
   public List<Account> getAllAccounts() {

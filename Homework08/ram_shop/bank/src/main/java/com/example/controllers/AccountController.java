@@ -16,20 +16,19 @@ import com.example.services.TransferService;
 @RestController
 public class AccountController {
 
-  private final TransferService transferService;
+    private final TransferService transferService;
 
-  @PostMapping("/transfer")
-  public void transferMoney(
-      @RequestBody TransferRequest request
-      ) {
-    transferService.transferMoney(
-        request.getSenderAccountId(),
-        request.getReceiverAccountId(),
-        request.getAmount());
-  }
+    @PostMapping("/transfer")
+    public boolean transferMoney(
+            @RequestBody TransferRequest request) {
+        return transferService.transferMoney(
+                request.getSenderAccountId(),
+                request.getReceiverAccountId(),
+                request.getAmount());
+    }
 
-  @GetMapping("/accounts")
-  public List<Account> getAllAccounts() {
-    return transferService.getAllAccounts();
-  }
+    @GetMapping("/accounts")
+    public List<Account> getAllAccounts() {
+        return transferService.getAllAccounts();
+    }
 }

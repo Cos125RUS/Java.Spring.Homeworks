@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 /**
@@ -73,13 +74,14 @@ public class WebController {
 
     @GetMapping("/watch/{episode}")
     public String watch(@PathVariable String episode, Model model) {
-
+        System.out.println(episode);
         return "watch";
     }
 
-    @PostMapping("/buy/{id}/{sum}/{episode}")
-    public String buy(@PathVariable int id, @PathVariable int sum, @PathVariable String episode) {
-
-        return "redirect:/watch/" + episode;
+    @GetMapping("/buy/{id}/{sum}/{episode}")
+    public String buy(@PathVariable int id, @PathVariable BigDecimal sum, @PathVariable String episode) {
+        if (payService.pay(id, sum, links.getTransfer()))
+            return "redirect:/watch/" + episode;
+        else return "redirect:/";
     }
 }

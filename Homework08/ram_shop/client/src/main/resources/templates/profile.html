@@ -38,7 +38,7 @@
                         </thead>
                         <tbody>
                             <tr th:each="episode: ${episodes}" class="profile__episodes-line">
-                                <td><a th:href="@{'/Buy/'+${episode.episode}}" class="watch">Buy</a></td>
+                                <td><a th:href="@{'/buy/'+'1/50/'+${episode.episode}}" class="watch">Buy</a></td>
                                 <td th:text="${episode.episode}">episode</td>
                                 <td th:text="${episode.air_date}">air_date</td>
                                 <td th:text="${episode.name}">name</td>
