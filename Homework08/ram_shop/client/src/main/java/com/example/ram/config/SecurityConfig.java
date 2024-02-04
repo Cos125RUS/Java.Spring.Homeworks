@@ -1,5 +1,7 @@
 package com.example.ram.config;
 
+import com.example.ram.repository.UserRepository;
+import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -14,14 +16,16 @@ import org.springframework.security.web.SecurityFilterChain;
 
 @Configuration
 @EnableWebSecurity
+@RequiredArgsConstructor
 public class SecurityConfig {
+	private final UserRepository userRepository;
 
 	@Bean
     SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
 		http
 		.authorizeHttpRequests((authorize) -> authorize
 			.requestMatchers("/css/**", "/", "/page/**", "/character/**").permitAll()
-			.requestMatchers("/watch/**", "/buy/**").hasAnyRole("USER")
+			.requestMatchers("/watch/**", "/buy/**", "/confirm/**").hasAnyRole("USER")
 			.anyRequest().authenticated()
 		)
 		.formLogin(login -> login
@@ -40,6 +44,7 @@ public class SecurityConfig {
 	@Bean
 	UserDetailsManager inMemoryUserDetailsManager() {
 		var user = User.withUsername("user").password("{noop}password").roles("USER").build();
+		userRepository.save(new com.example.ram.domain.User(user.getUsername()));
 		InMemoryUserDetailsManager detailsManager = new InMemoryUserDetailsManager(user);
 		return detailsManager;
 	}
