@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="ru" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shop</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="../static/css/style.css">
+</head>
+
+<body>
+    <div class="container">
+        <header>
+            <h1>Shop</h1>
+        </header>
+        <main>
+            <h2 class="product_type"></h2>
+            <div class="products_box" th:each="product: ${products}">
+                <form class="product" th:action="'/buy/'+${product.id}" method="post">
+                    <div class="img">
+                        <img th:src="'/img/'+${product.brand}+'-'+${product.model}+'.jpg'" alt="Картинка продукта">
+                    </div>
+                    <div class="description">
+                        <p class="brand" th:text="${product.brand}"></p>
+                        <p class="model" th:text="${product.model}"></p>
+                        <p class="price" th:text="${product.price}"></p>
+                    </div>
+                    <div class="action">
+                        <button type="submit">Купить</button>
+                    </div>
+                </form>
+            </div>
+        </main>
+        <footer></footer>
+    </div>
+</body>
+
+</html>
