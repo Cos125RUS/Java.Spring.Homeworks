@@ -20,4 +20,5 @@ public class Links {
     private final String characters;
     private final String path;
     private final String transfer;
+    private final String provider;
 }

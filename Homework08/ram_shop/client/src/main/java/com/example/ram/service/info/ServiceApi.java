@@ -1,4 +1,4 @@
-package com.example.ram.service;
+package com.example.ram.service.info;
 
 import com.example.ram.domain.Characters;
 import com.example.ram.domain.Episode;

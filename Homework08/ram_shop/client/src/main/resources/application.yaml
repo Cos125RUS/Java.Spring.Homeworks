@@ -5,6 +5,11 @@ links:
   path: http://localhost:8080/page/
   characters: https://rickandmortyapi.com/api/character
   transfer: http://localhost:8081/transfer
+  provider: http://localhost:8082/
+
+requisites:
+  bank: 2
+  provider: 1
 
 spring:
   devtools:

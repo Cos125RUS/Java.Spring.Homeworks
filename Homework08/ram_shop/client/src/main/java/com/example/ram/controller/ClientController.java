@@ -1,36 +1,42 @@
 package com.example.ram.controller;
 
 import com.example.ram.config.Links;
+import com.example.ram.config.Requisites;
 import com.example.ram.domain.Characters;
+import com.example.ram.domain.DownloadRequest;
 import com.example.ram.domain.Result;
-import com.example.ram.service.ParserService;
-import com.example.ram.service.PayService;
-import com.example.ram.service.ServiceApi;
+import com.example.ram.service.download.ProviderService;
+import com.example.ram.service.parse.ParserService;
+import com.example.ram.service.pay.PayService;
+import com.example.ram.service.info.ServiceApi;
 import lombok.RequiredArgsConstructor;
-import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
 
 import java.math.BigDecimal;
-import java.util.List;
+import java.time.LocalDateTime;
+import java.util.Map;
+import java.util.UUID;
 
 /**
  * Контролёр запросов к серверу
  */
 @Controller
 @RequiredArgsConstructor
-public class WebController {
+public class ClientController {
     private final ServiceApi serviceApi;
     private final ParserService parserService;
     private final Links links;
     private final PayService payService;
+    private final ProviderService providerService;
+    private final Requisites requisites;
 //    private final InMemoryUserDetailsManager userDetailsManager;
 
     /**
      * главная страница
+     *
      * @return index.html
      */
     @GetMapping
@@ -40,7 +46,8 @@ public class WebController {
 
     /**
      * Переход по страницам
-     * @param page страница
+     *
+     * @param page  страница
      * @param model модель страницы
      * @return выбранная страница
      */
@@ -59,7 +66,8 @@ public class WebController {
 
     /**
      * Страница персонажа
-     * @param id идентификатор персонажа
+     *
+     * @param id    идентификатор персонажа
      * @param model модель страницы
      * @return страница выбранного персонажа
      */
@@ -80,8 +88,15 @@ public class WebController {
 
     @GetMapping("/buy/{id}/{sum}/{episode}")
     public String buy(@PathVariable int id, @PathVariable BigDecimal sum, @PathVariable String episode) {
-        if (payService.pay(id, sum, links.getTransfer()))
-            return "redirect:/watch/" + episode;
-        else return "redirect:/";
+        DownloadRequest downloadRequest = new DownloadRequest(
+                UUID.randomUUID(), requisites.getProvider(), episode, LocalDateTime.now());
+        if (providerService.download(downloadRequest, links.getProvider() + "get")) {
+            if (payService.pay(id, sum, links.getTransfer()))
+                return "redirect:/watch/" + episode;
+            else {
+                providerService.refund(downloadRequest.getId(), links.getProvider() + "refund");
+                return "redirect:/";
+            }
+        } else return "redirect:/";
     }
 }

@@ -1,11 +1,9 @@
-package com.example.ram.service;
+package com.example.ram.service.info;
 
 import com.example.ram.domain.Characters;
 import com.example.ram.domain.Episode;
-import com.example.ram.domain.Info;
 import com.example.ram.domain.Result;
 import lombok.AllArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.*;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;

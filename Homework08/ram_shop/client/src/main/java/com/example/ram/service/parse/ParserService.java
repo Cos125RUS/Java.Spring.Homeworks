@@ -1,15 +1,14 @@
-package com.example.ram.service;
+package com.example.ram.service.parse;
 
-import com.example.ram.config.Links;
 import com.example.ram.domain.Characters;
 import com.example.ram.domain.Episode;
 import com.example.ram.domain.Info;
+import com.example.ram.service.info.ServiceApi;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.Comparator;
 import java.util.List;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;

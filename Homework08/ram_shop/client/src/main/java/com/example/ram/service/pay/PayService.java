@@ -1,4 +1,4 @@
-package com.example.ram.service;
+package com.example.ram.service.pay;
 
 import java.math.BigDecimal;
 
