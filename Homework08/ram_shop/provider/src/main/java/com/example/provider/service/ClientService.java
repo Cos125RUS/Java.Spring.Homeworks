@@ -17,7 +17,6 @@ public class ClientService {
 
     public boolean get(Request request) {
         Client client = clientRepository.findById(request.getClientId()).get();
-        System.out.println("client: " + client);
         new Thread(() -> {
             client.setLimit(client.getLimit() - 1);
             clientRepository.save(client);

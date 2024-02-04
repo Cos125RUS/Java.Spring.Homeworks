@@ -1,5 +1,6 @@
 package com.example.nodes.aspect;
 
+import com.example.nodes.domain.Note;
 import lombok.extern.java.Log;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
@@ -13,9 +14,9 @@ import java.util.Arrays;
 public class LoggingAspect {
 
     @Around(value = "@annotation(TrackUserAction)")
-    public ResponseEntity logExecution(ProceedingJoinPoint joinPoint) throws Throwable {
+    public ResponseEntity<Note> logExecution(ProceedingJoinPoint joinPoint) throws Throwable {
         long start = System.currentTimeMillis();
-        ResponseEntity response = (ResponseEntity) joinPoint.proceed();
+        ResponseEntity<Note> response = (ResponseEntity<Note>) joinPoint.proceed();
         long executionTime = System.currentTimeMillis() - start;
         log.info("LoggingAspect\n\u001B[33mВходящий запрос типа: \u001B[35m'" +
                 joinPoint.getSignature().getName() + "'\u001B[33m\n" +

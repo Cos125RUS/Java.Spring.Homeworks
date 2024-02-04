@@ -10,6 +10,7 @@ links:
 requisites:
   bank: 2
   provider: 1
+  price: 50
 
 spring:
   devtools:

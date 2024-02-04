@@ -1,5 +1,6 @@
 package com.example.ram.controller;
 
+import com.example.ram.aspect.Logging;
 import com.example.ram.config.Links;
 import com.example.ram.config.Requisites;
 import com.example.ram.domain.Characters;
@@ -82,16 +83,17 @@ public class ClientController {
 
     @GetMapping("/watch/{episode}")
     public String watch(@PathVariable String episode, Model model) {
-        System.out.println(episode);
+
         return "watch";
     }
 
-    @GetMapping("/buy/{id}/{sum}/{episode}")
-    public String buy(@PathVariable int id, @PathVariable BigDecimal sum, @PathVariable String episode) {
+    @GetMapping("/buy/{id}/{episode}")
+    @Logging
+    public String buy(@PathVariable int id, @PathVariable String episode) {
         DownloadRequest downloadRequest = new DownloadRequest(
                 UUID.randomUUID(), requisites.getProvider(), episode, LocalDateTime.now());
         if (providerService.download(downloadRequest, links.getProvider() + "get")) {
-            if (payService.pay(id, sum, links.getTransfer()))
+            if (payService.pay(id, requisites.getPrice(), links.getTransfer()))
                 return "redirect:/watch/" + episode;
             else {
                 providerService.refund(downloadRequest.getId(), links.getProvider() + "refund");

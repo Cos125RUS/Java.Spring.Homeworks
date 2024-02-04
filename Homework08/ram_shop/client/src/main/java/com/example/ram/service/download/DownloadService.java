@@ -1,10 +1,6 @@
 package com.example.ram.service.download;
 
-import com.example.ram.config.Links;
-import com.example.ram.config.Requisites;
 import com.example.ram.domain.DownloadRequest;
-import com.example.ram.domain.Episode;
-import com.example.ram.domain.Transfer;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.RequestEntity;
