@@ -12,15 +12,14 @@ import com.example.ram.service.parse.ParserService;
 import com.example.ram.service.pay.PayService;
 import com.example.ram.service.info.ServiceApi;
 import lombok.RequiredArgsConstructor;
-import org.apache.tomcat.util.http.parser.Authorization;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
-import java.util.Map;
 import java.util.UUID;
 
 /**
@@ -90,13 +89,36 @@ public class ClientController {
         return "watch";
     }
 
-    @GetMapping("/buy/{username}/{episode}")
-    @Logging
-    public String buy(@PathVariable String username, @PathVariable String episode) {
+//    @GetMapping("/buy/{username}/{episode}")
+//    @Logging
+//    public String buy(@PathVariable String username, @PathVariable String episode) {
+//        DownloadRequest downloadRequest = new DownloadRequest(
+//                UUID.randomUUID(), requisites.getProvider(), episode, LocalDateTime.now());
+//        if (providerService.download(downloadRequest, links.getProvider() + "get")) {
+//            if (payService.pay(userRepository.findByName(username).getId(), requisites.getPrice(),
+//                    links.getTransfer()))
+//                return "redirect:/watch/" + episode;
+//            else {
+//                providerService.refund(downloadRequest.getId(), links.getProvider() + "refund");
+//                return "redirect:/";
+//            }
+//        } else return "redirect:/";
+//    }
+
+    @GetMapping("/confirm/{episode}")
+    public String confirm(@PathVariable String episode, Model model) {
+        model.addAttribute("episode", episode);
+        return "confirm";
+    }
+
+    @GetMapping("/confirm-transfer")
+    public String confirmTransfer(@RequestParam("result") boolean result,
+                                  @RequestParam("senderAccountId") int senderAccountId,
+                                  @RequestParam("episode") String episode, Model model) {
         DownloadRequest downloadRequest = new DownloadRequest(
                 UUID.randomUUID(), requisites.getProvider(), episode, LocalDateTime.now());
         if (providerService.download(downloadRequest, links.getProvider() + "get")) {
-            if (payService.pay(userRepository.findByName(username).getId(), requisites.getPrice(),
+            if (payService.pay(senderAccountId, requisites.getPrice(),
                     links.getTransfer()))
                 return "redirect:/watch/" + episode;
             else {
@@ -104,11 +126,6 @@ public class ClientController {
                 return "redirect:/";
             }
         } else return "redirect:/";
-    }
 
-    @GetMapping("/confirm/{episode}")
-    public String confirm(@PathVariable String episode, Model model) {
-        model.addAttribute("episode", episode);
-        return "confirm";
     }
 }

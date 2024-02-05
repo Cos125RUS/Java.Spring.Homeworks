@@ -21,9 +21,7 @@
             </a>
         </header>
         <div class="confirm_block">
-            <a th:href="@{'/buy/' + ${#authentication.principal.username} + '/' + ${episode}}" class="confirm_link">Go
-                to a third-party site to
-                pay for your purchase</a>
+            <a th:href="@{'/buy/' + ${#authentication.principal.username} + '/' + ${episode}}" class="confirm_link">Confirm debiting funds from account</a>
         </div>
     </div>
 </body>

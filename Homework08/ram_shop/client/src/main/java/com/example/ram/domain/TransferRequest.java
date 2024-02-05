@@ -7,7 +7,7 @@ import java.math.BigDecimal;
 
 @AllArgsConstructor
 @Data
-public class Transfer {
+public class TransferRequest {
     private long senderAccountId;
     private long receiverAccountId;
     private BigDecimal amount;

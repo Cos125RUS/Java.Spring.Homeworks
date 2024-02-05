@@ -1,3 +1,0 @@
-февр. 05, 2024 2:08:21 PM com.example.ram.aspect.LoggingAspect addLog
-INFO: 
-Новый запрос просмотра!	ID Пользователя: user	Эпизод: S03E06
