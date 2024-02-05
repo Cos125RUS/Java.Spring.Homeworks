@@ -5,6 +5,9 @@ import lombok.Data;
 
 import java.math.BigDecimal;
 
+/**
+ * Денежный перевод
+ */
 @AllArgsConstructor
 @Data
 public class TransferRequest {

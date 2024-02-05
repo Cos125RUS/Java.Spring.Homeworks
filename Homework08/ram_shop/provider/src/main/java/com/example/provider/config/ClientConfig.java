@@ -9,10 +9,19 @@ import org.springframework.stereotype.Component;
 import java.net.URI;
 import java.net.URISyntaxException;
 
+/**
+ * Клиентский конфиг
+ */
 @Component
 @RequiredArgsConstructor
 public class ClientConfig {
     private final ClientRepository clientRepository;
+
+    /**
+     * Дефолтный пользователь (Магазин Рика и Морти)
+     * @return
+     * @throws URISyntaxException
+     */
     @Bean
     public Client getClient() throws URISyntaxException {
         return clientRepository.save(new Client(new URI("http://localhost:8080"),

@@ -1,0 +1,3 @@
+февр. 05, 2024 9:12:09 PM com.example.ram.aspect.LoggingAspect addLog
+INFO: 
+Новый запрос просмотра!	ID Пользователя: user	Эпизод: S01E10

@@ -11,6 +11,9 @@ import java.math.BigDecimal;
 import java.net.URI;
 import java.net.URISyntaxException;
 
+/**
+ * Платёжный сервис
+ */
 @AllArgsConstructor
 @Service
 public class PayServiceImpl implements PayService {

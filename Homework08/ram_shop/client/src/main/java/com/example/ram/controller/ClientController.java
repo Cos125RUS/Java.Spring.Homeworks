@@ -83,34 +83,38 @@ public class ClientController {
         return "profile";
     }
 
+    /**
+     * Страница просмотра
+     * @param episode
+     * @param model
+     * @return
+     */
     @GetMapping("/watch/{episode}")
     public String watch(@PathVariable String episode, Model model) {
         model.addAttribute("episode", episode);
         return "watch";
     }
 
-//    @GetMapping("/buy/{username}/{episode}")
-//    @Logging
-//    public String buy(@PathVariable String username, @PathVariable String episode) {
-//        DownloadRequest downloadRequest = new DownloadRequest(
-//                UUID.randomUUID(), requisites.getProvider(), episode, LocalDateTime.now());
-//        if (providerService.download(downloadRequest, links.getProvider() + "get")) {
-//            if (payService.pay(userRepository.findByName(username).getId(), requisites.getPrice(),
-//                    links.getTransfer()))
-//                return "redirect:/watch/" + episode;
-//            else {
-//                providerService.refund(downloadRequest.getId(), links.getProvider() + "refund");
-//                return "redirect:/";
-//            }
-//        } else return "redirect:/";
-//    }
-
+    /**
+     * Страница подтверждения оплаты
+     * @param episode
+     * @param model
+     * @return
+     */
     @GetMapping("/confirm/{episode}")
     public String confirm(@PathVariable String episode, Model model) {
         model.addAttribute("episode", episode);
         return "confirm";
     }
 
+    /**
+     * Обработка после подтверждения платежа
+     * @param result
+     * @param senderAccountId
+     * @param episode
+     * @param model
+     * @return
+     */
     @GetMapping("/confirm-transfer")
     public String confirmTransfer(@RequestParam("result") boolean result,
                                   @RequestParam("senderAccountId") int senderAccountId,

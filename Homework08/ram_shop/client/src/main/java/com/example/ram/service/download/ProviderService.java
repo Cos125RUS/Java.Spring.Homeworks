@@ -6,6 +6,9 @@ import com.example.ram.domain.Episode;
 import java.util.Map;
 import java.util.UUID;
 
+/**
+ * Интерфейс сервиса загрузок
+ */
 public interface ProviderService {
     boolean download(DownloadRequest downloadRequest, String link);
 

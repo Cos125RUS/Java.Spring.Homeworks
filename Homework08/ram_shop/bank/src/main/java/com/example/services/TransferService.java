@@ -13,12 +13,22 @@ import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.List;
 
+/**
+ * Сервис денежных переводов
+ */
 @AllArgsConstructor
 @Service
 public class TransferService {
 
   private final AccountRepository accountRepository;
 
+  /**
+   * Совершить перевод
+   * @param idSender
+   * @param idReceiver
+   * @param amount
+   * @return
+   */
   @Transactional
   public boolean transferMoney(long idSender, long idReceiver, BigDecimal amount) {
     Account sender = accountRepository.findAccountById(idSender);
@@ -34,6 +44,10 @@ public class TransferService {
     return true;
   }
 
+  /**
+   * Получить список всех аккаунтов
+   * @return
+   */
   public List<Account> getAllAccounts() {
     return accountRepository.findAllAccounts();
   }

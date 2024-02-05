@@ -6,6 +6,9 @@ import lombok.NoArgsConstructor;
 
 import java.net.URI;
 
+/**
+ * Клиенты
+ */
 @Entity
 @Table(name = "clients")
 @Data

@@ -20,6 +20,9 @@ import org.springframework.web.servlet.view.RedirectView;
 
 import java.net.MalformedURLException;
 
+/**
+ * Рест контроллер
+ */
 @RestController
 @RequiredArgsConstructor
 @JsonAutoDetect(fieldVisibility = JsonAutoDetect.Visibility.ANY)
@@ -27,6 +30,13 @@ public class DataTransferController {
     private final Requisites requisites;
     private final UserRepository userRepository;
 
+    /**
+     * Перенаправление на сайт банка с реквизитами в небезопасном виде
+     * @param username
+     * @param episode
+     * @param attributes
+     * @return
+     */
     @GetMapping("/buy/{username}/{episode}")
     @Logging
     public RedirectView buy(@PathVariable String username, @PathVariable String episode,

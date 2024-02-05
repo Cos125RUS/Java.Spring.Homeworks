@@ -4,6 +4,9 @@ import lombok.Data;
 
 import java.util.Comparator;
 
+/**
+ * Эпизоды
+ */
 @Data
 public class Episode implements Comparable<Episode> {
     private Integer id;

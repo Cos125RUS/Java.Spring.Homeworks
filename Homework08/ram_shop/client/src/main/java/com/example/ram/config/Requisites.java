@@ -7,6 +7,9 @@ import org.springframework.validation.annotation.Validated;
 
 import java.math.BigDecimal;
 
+/**
+ * Реквизиты
+ */
 @ConfigurationProperties(prefix = "requisites")
 @Data
 @Validated

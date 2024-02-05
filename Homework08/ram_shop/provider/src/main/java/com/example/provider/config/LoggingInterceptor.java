@@ -1,6 +1,5 @@
 package com.example.provider.config;
 
-import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import lombok.NoArgsConstructor;
@@ -9,6 +8,9 @@ import org.springframework.web.servlet.ModelAndView;
 
 import java.io.IOException;
 
+/**
+ * Перехватчик
+ */
 @NoArgsConstructor
 public class LoggingInterceptor implements HandlerInterceptor {
     private long start;

@@ -12,11 +12,20 @@ import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.UUID;
 
+/**
+ * Сервис загрузок
+ */
 @AllArgsConstructor
 @Service
 public class DownloadService implements ProviderService{
     private RestTemplate template;
 
+    /**
+     * Разрешение на загрузку
+     * @param downloadRequest
+     * @param link
+     * @return
+     */
     @Override
     public boolean download(DownloadRequest downloadRequest, String link) {
         try {
@@ -30,6 +39,12 @@ public class DownloadService implements ProviderService{
         }
     }
 
+    /**
+     * Отмена загрузки
+     * @param id
+     * @param link
+     * @return
+     */
     @Override
     public boolean refund(UUID id, String link) {
         try {

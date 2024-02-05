@@ -4,6 +4,9 @@ import lombok.Data;
 
 import java.math.BigDecimal;
 
+/**
+ * Параметры трансфера
+ */
 @Data
 public class TransferRequest {
 

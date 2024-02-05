@@ -14,14 +14,23 @@ import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 import org.springframework.security.provisioning.UserDetailsManager;
 import org.springframework.security.web.SecurityFilterChain;
 
+/**
+ * Репозиторий пользователей
+ */
 @Configuration
 @EnableWebSecurity
 @RequiredArgsConstructor
 public class SecurityConfig {
 	private final UserRepository userRepository;
 
+	/**
+	 * Фильтр безопасности
+	 * @param http
+	 * @return
+	 * @throws Exception
+	 */
 	@Bean
-    SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
+    public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
 		http
 		.authorizeHttpRequests((authorize) -> authorize
 			.requestMatchers("/css/**", "/", "/page/**", "/character/**").permitAll()
@@ -36,11 +45,19 @@ public class SecurityConfig {
         return http.build();
     }
 
+	/**
+	 * Кодировщик паролей
+	 * @return
+	 */
 	@Bean
 	PasswordEncoder passwordEncoder() {
 		return PasswordEncoderFactories.createDelegatingPasswordEncoder();
 	}
 
+	/**
+	 * Менеджер пользовательских данных
+	 * @return
+	 */
 	@Bean
 	UserDetailsManager inMemoryUserDetailsManager() {
 		var user = User.withUsername("user").password("{noop}password").roles("USER").build();

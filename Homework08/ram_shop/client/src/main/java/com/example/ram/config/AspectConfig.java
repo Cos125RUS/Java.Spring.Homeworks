@@ -12,15 +12,26 @@ import java.util.logging.FileHandler;
 import java.util.logging.Logger;
 import java.util.logging.SimpleFormatter;
 
+/**
+ * Конфиг аспектов
+ */
 @Configuration
 @ComponentScan(basePackages = "com.example.ram")
 @EnableAspectJAutoProxy
 public class AspectConfig {
+    /**
+     * Аспект логирования
+     * @return
+     */
     @Bean
     public LoggingAspect aspect() {
         return new LoggingAspect();
     }
 
+    /**
+     * Файловый логер
+     * @return
+     */
     @Bean
     public Logger noteLogger() {
         Logger logger = Logger.getLogger(LoggingAspect.class.getName());

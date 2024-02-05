@@ -12,12 +12,20 @@ import com.example.services.TransferService;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.springframework.web.servlet.view.RedirectView;
 
+/**
+ * Rest-контроллер трансферов
+ */
 @AllArgsConstructor
 @RestController
-public class AccountController {
+public class RestTransferController {
 
     private final TransferService transferService;
 
+    /**
+     * Перевод со счёта на счёт
+     * @param request
+     * @return
+     */
     @PostMapping("/transfer")
     public boolean transferMoney(
             @RequestBody TransferRequest request) {
@@ -27,6 +35,15 @@ public class AccountController {
                 request.getAmount());
     }
 
+    /**
+     * Подтверждение трансфера
+     * @param senderAccountId
+     * @param receiverAccountId
+     * @param amount
+     * @param episode
+     * @param attributes
+     * @return
+     */
     @PostMapping("/confirm/{senderAccountId}/{receiverAccountId}/{amount}/{episode}")
     public RedirectView confirm(@PathVariable long senderAccountId,
                                 @PathVariable long receiverAccountId,
@@ -40,6 +57,10 @@ public class AccountController {
         return new RedirectView("http://localhost:8080/confirm-transfer");
     }
 
+    /**
+     * Список счетов (для проверки работы приложения)
+     * @return
+     */
     @GetMapping("/accounts")
     public List<Account> getAllAccounts() {
         return transferService.getAllAccounts();

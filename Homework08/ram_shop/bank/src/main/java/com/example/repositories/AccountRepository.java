@@ -9,6 +9,9 @@ import org.springframework.stereotype.Repository;
 import java.math.BigDecimal;
 import java.util.List;
 
+/**
+ * Репозиторий аккаунтов
+ */
 @AllArgsConstructor
 @Repository
 public class AccountRepository {

@@ -8,10 +8,18 @@ import org.aspectj.lang.annotation.Aspect;
 
 import java.util.Arrays;
 
+/**
+ * Аспектное логирование
+ */
 @Aspect
 @Log
 public class TransferLogging {
-
+    /**
+     * Логирование новых транзакций
+     * @param joinPoint
+     * @return
+     * @throws Throwable
+     */
     @Around("execution(* com.example.services.TransferService.transferMoney(..))")
     public Object addLog(ProceedingJoinPoint joinPoint) throws Throwable {
         Object[] args = joinPoint.getArgs();

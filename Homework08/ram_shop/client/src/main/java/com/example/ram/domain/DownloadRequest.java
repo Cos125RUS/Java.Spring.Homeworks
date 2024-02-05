@@ -6,6 +6,9 @@ import lombok.Data;
 import java.time.LocalDateTime;
 import java.util.UUID;
 
+/**
+ * Информация о загрузках
+ */
 @AllArgsConstructor
 @Data
 public class DownloadRequest {

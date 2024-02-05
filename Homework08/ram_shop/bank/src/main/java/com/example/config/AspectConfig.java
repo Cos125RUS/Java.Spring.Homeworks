@@ -9,13 +9,24 @@ import java.util.logging.FileHandler;
 import java.util.logging.Logger;
 import java.util.logging.SimpleFormatter;
 
+/**
+ * Конфигурация аспектов
+ */
 @Configuration
 public class AspectConfig {
+    /**
+     * Логер для аспектов
+     * @return
+     */
     @Bean
     public TransferLogging aspect() {
         return new TransferLogging();
     }
 
+    /**
+     * Файловый логер
+     * @return
+     */
     @Bean
     public Logger noteLogger() {
         Logger logger = Logger.getLogger(TransferLogging.class.getName());
