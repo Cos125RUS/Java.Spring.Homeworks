@@ -1,0 +1,8 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="StartAll" type="CompoundRunConfigurationType">
+    <toRun name="Bank" type="Application" />
+    <toRun name="Client" type="Application" />
+    <toRun name="Provider" type="Application" />
+    <method v="2" />
+  </configuration>
+</component>

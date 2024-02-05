@@ -21,7 +21,8 @@ public class AspectConfig {
         Logger logger = Logger.getLogger(TransferLogging.class.getName());
         FileHandler handler = null;
         try {
-            handler = new FileHandler("log/log.txt");
+            handler = new FileHandler("bank/log/log.txt");
+//            handler = new FileHandler("log/log.txt");
             handler.setFormatter(new SimpleFormatter());
             logger.addHandler(handler);
         } catch (IOException e) {

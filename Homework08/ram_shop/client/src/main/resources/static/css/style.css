@@ -27,22 +27,6 @@ li {
   min-height: 100vh;
 }
 
-.login_nav {
-  display: flex;
-  justify-content: end;
-}
-
-.nav_links {
-  margin-right: 10px;
-  margin-top: 10px;
-}
-
-.nav-item {
-  background-color: #000;
-  color: #fff;
-  border: none;
-}
-
 .title {
   text-align: center;
   font-size: 5em;
@@ -177,4 +161,45 @@ li {
 
 .attribute {
   color: #cff0f4;
+}
+
+.login_nav {
+  display: flex;
+  justify-content: end;
+  padding-bottom: 15px;
+}
+
+.nav_links {
+  margin-right: 10px;
+  margin-top: 10px;
+}
+
+.nav-item {
+  background-color: #000;
+  color: #fff;
+  border: none;
+}
+.nav-item:hover {
+  cursor: pointer;
+}
+
+.episode_title {
+  color: white;
+}
+
+.watch_content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.confirm_block {
+  margin-top: 20vh;
+  display: flex;
+  justify-content: center;
+  font-size: 2em;
+}
+
+.confirm_link {
+  color: blueviolet;
 }/*# sourceMappingURL=style.css.map */

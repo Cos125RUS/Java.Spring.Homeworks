@@ -26,7 +26,8 @@ public class AspectConfig {
         Logger logger = Logger.getLogger(LoggingAspect.class.getName());
         FileHandler handler = null;
         try {
-            handler = new FileHandler("log/log.txt");
+            handler = new FileHandler("client/log/log.txt");
+//            handler = new FileHandler("log/log.txt");
             handler.setFormatter(new SimpleFormatter());
             logger.addHandler(handler);
         } catch (IOException e) {
