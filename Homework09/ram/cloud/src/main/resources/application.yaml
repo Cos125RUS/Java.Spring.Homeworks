@@ -1,0 +1,23 @@
+server:
+  port:
+    8765
+
+spring:
+  application:
+    name: cloud
+  cloud:
+    gateway:
+      routes:
+        - id: ram
+          uri: http://localhost:8080/
+          predicates:
+            - Path=/ram/**
+        - id: bank
+          uri: http://localhost:8081/
+          predicates:
+            - Path=/bank/**
+        - id: provider
+          uri: http://localhost:8082/
+          predicates:
+            - Path=/provider/**
+

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org"
+    xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Watch</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Spring Boot Tutorial</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+    <script src="http://localhost:35729/livereload.js"></script>
+</head>
+
+<body>
+    <div class="content_container">
+        <header>
+            <div th:replace="~{page-templates :: navbar}"></div>
+            <a href="http://localhost:8765/ram">
+                <h1 class="title">The Rick and Morty Characters</h1>
+            </a>
+        </header>
+        <main>
+            <div class="main container watch_content">
+                <h1 th:text="'Episode ' + ${episode}" class="episode_title">Watch</h1>
+                <video src="#" poster="" width="400" height="300" preload controls loop></video>
+            </div>
+        </main>
+        <footer></footer>
+    </div>
+</body>
+
+</html>

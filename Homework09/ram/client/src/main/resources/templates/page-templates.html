@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="https://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Spring Boot Tutorial</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+<div th:fragment="navbar">
+    <nav class="login_nav">
+        <ul class="nav_links">
+            <li sec:authorize="hasRole('USER')" class="nav-item"><span th:text="${username}">User</span></li>
+            <li sec:authorize="!isAuthenticated()" class="nav-item"><a href="/ram/login" class="nav-item">Login</a></li>
+            <li sec:authorize="isAuthenticated()" class="nav-item">
+                <form class="nav-item" th:action="@{/ram/logout}" method="post">
+                    <input class="nav-item" type="submit" value="Logout"/>
+                </form>
+            </li>
+        </ul>
+    </nav>
+</div>
+</body>
+</html>

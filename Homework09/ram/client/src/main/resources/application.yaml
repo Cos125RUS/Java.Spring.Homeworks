@@ -1,0 +1,21 @@
+server:
+  port: 8080
+
+links:
+  path: http://localhost:8765/ram/page/
+  characters: https://rickandmortyapi.com/api/character
+  transfer: http://localhost:8765/bank/transfer
+  provider: http://localhost:8765/provider/
+
+requisites:
+  bank: 2
+  provider: 1
+  price: 50
+
+spring:
+  application:
+    name: ram
+  devtools:
+    restart:
+      enabled: true
+

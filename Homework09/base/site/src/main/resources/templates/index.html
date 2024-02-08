@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+    <link rel="stylesheet" href="../static/css/style.css">
+</head>
+
+<body>
+    <header></header>
+    <main>
+        <div class="container">
+            <div class="top">
+                <div class="title_box">
+                    <h1 class="title">NOTES</h1>
+                </div>
+                <div class="buttons_box">
+                    <button class="button new">New</button>
+                    <!-- <button class="button update">Update</button> -->
+                    <button class="button delete">Delete</button>
+                </div>
+            </div>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th class="column_head"></th>
+                        <th class="column_head">CREATION</th>
+                        <th class="column_head">TITLE</th>
+                        <th class="column_head">BODY</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="column">
+                            <input type="checkbox" name="id" id="id" class="checkbox">
+                            <label for="id"></label>
+                        </td>
+                        <td class="column">12/12/12</td>
+                        <td class="column">Test</td>
+                        <td class="column">Lorem ipsum dolor sit amet consectetur adipisicing elit. Necessitatibus,
+                            reiciendis.
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </main>
+    <footer></footer>
+</body>
+
+</html>
