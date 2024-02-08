@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+    <link rel="stylesheet" href="../static/css/style.css">
+    <title>Note</title>
+</head>
+
+<body>
+    <div class="container">
+        <div class="top">
+            <div class="title_box">
+                <a class="title" href="index.html">NOTES</a>
+            </div>
+            <div class="text__box">
+                <form action="/delete" method="post" class="text__form">
+                    <div class="text__content">
+                        <textarea name="text" id="text" cols="30" rows="10" class="text"></textarea>
+                    </div>
+                    <div class="buttons_box buttons_in_note">
+                        <button class="button new" id="new">Add</button>
+                        <button class="button delete" id="delete">Delete</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <script src="../static/js/script2.js"></script>
+</body>
+
+</html>

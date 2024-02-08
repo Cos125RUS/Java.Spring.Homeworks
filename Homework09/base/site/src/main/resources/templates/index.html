@@ -3,7 +3,8 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NOTES</title>
     <link rel="stylesheet" th:href="@{/css/style.css}">
     <link rel="stylesheet" href="../static/css/style.css">
 </head>
@@ -14,15 +15,14 @@
         <div class="container">
             <div class="top">
                 <div class="title_box">
-                    <h1 class="title">NOTES</h1>
+                    <a class="title flicker-in-2" href="index.html">NOTES</a>
                 </div>
                 <div class="buttons_box">
-                    <button class="button new">New</button>
-                    <!-- <button class="button update">Update</button> -->
-                    <button class="button delete">Delete</button>
+                    <a class="button new roll-in-right" href="note.html">New</a>
+                    <button class="button delete roll-in-right" id="delete">Delete</button>
                 </div>
             </div>
-            <table class="table">
+            <table class="table slide-in-blurred-top">
                 <thead>
                     <tr>
                         <th class="column_head"></th>
@@ -32,7 +32,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
+                    <tr id="note_row">
                         <td class="column">
                             <input type="checkbox" name="id" id="id" class="checkbox">
                             <label for="id"></label>
@@ -48,6 +48,8 @@
         </div>
     </main>
     <footer></footer>
+
+    <script src="../static/js/script1.js"></script>
 </body>
 
 </html>
