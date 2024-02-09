@@ -1,6 +1,5 @@
 package com.example.service;
 
-import ch.qos.logback.core.subst.Node;
 import com.example.domain.Note;
 import org.springframework.http.*;
 import org.springframework.stereotype.Service;
@@ -21,11 +20,31 @@ public class SiteService {
     }
 
     public Note getNote(int id) {
-        RestTemplate template = null;
-        HttpHeaders headers = null;
+        RestTemplate template = new RestTemplate();
+        HttpHeaders headers = new HttpHeaders();
         headers.setAccept(List.of(MediaType.APPLICATION_JSON));
         HttpEntity<String> entity = new HttpEntity<>(headers);
-        ResponseEntity<Note> response = template.exchange("/notes/" + id, HttpMethod.GET, entity, Note.class);
+        ResponseEntity<Note> response = template.exchange("http://localhost:8765/notes/" + id, HttpMethod.GET, entity, Note.class);
+        return response.getBody();
+    }
+
+    public Note save(String id, String title, String text) {
+        RestTemplate template = new RestTemplate();
+        HttpHeaders headers = new HttpHeaders();
+        headers.setAccept(List.of(MediaType.APPLICATION_JSON));
+        String url = "http://localhost:8765/notes";
+        HttpMethod method;
+        Note note = new Note(title, text);
+        if (!id.isEmpty()) {
+            long noteId = Long.parseLong(id);
+            note.setId(noteId);
+            url += "/" + noteId;
+            method = HttpMethod.PUT;
+        } else {
+            method = HttpMethod.POST;
+        }
+        HttpEntity<Note> entity = new HttpEntity<>(note, headers);
+        ResponseEntity<Note> response = template.exchange(url, method, entity, Note.class);
         return response.getBody();
     }
 }

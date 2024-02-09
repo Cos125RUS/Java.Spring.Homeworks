@@ -196,6 +196,7 @@ body {
 
 .title {
   padding-bottom: 20px;
+  margin-top: 10px;
   font-size: 3.2em;
   text-shadow: rgb(197, 9, 12) 1px 0 2px;
 }
@@ -409,4 +410,28 @@ body {
 
 .heartbeat {
   animation: heartbeat 1s linear both;
+}
+
+.note_title_box {
+  display: flex;
+  justify-content: center;
+  margin: 20px 0;
+}
+.note_title_field {
+  min-width: 50vw;
+  padding: 15px;
+  font-size: 1.5em;
+  border-radius: 20px;
+  box-sizing: border-box;
+  border: 2px solid #ccc;
+  background-color: rgba(225, 224, 231, 0.4);
+  transition: border 0.2s;
+  text-align: center;
+}
+.note_title_field:hover {
+  background-color: rgba(30, 10, 211, 0.1);
+  border: 2px solid #ccc;
+}
+.note_id {
+  display: none;
 }/*# sourceMappingURL=style.css.map */

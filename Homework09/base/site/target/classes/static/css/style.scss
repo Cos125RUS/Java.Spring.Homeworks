@@ -1,3 +1,4 @@
+//  #region keyframes
  @-webkit-keyframes flicker-in-2 {
      0% {
          opacity: 0;
@@ -509,8 +510,9 @@
               animation-timing-function: ease-out;
     }
   }
-  
+//   #endregion keyframes
 
+// #region global
  * {
      margin: 0;
      padding: 0;
@@ -527,7 +529,9 @@
      // background-color: rgba(141, 140, 142, 0.3);
  }
 
- .container {
+//  #endregion global
+ 
+.container {
      padding-top: 3%;
      width: 90vw;
  }
@@ -712,6 +716,7 @@
      position: absolute;
      z-index: -1;
      opacity: 0;
+     
 
      &+label {
          display: inline-flex;
