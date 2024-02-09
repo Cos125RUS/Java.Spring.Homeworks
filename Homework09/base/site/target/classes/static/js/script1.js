@@ -21,7 +21,7 @@ function working() {
     deleteButton.addEventListener('click', () => {
         selectedNodes.forEach(element => {
             const id = element.querySelector('.checkbox').id.replace('id_', '');
-            const url = `/notes/${id}`;
+            const url = `/${id}`;
 
             // let deleteRequest = URLRequest.delete(element)
 

@@ -15,7 +15,7 @@ public class Cloud {
     @Bean
     public RouteLocator noteLocator(RouteLocatorBuilder builder) {
         return builder.routes()
-                .route("site", r -> r.path("/**").uri("http://localhost:8080/"))
+                .route("site", r -> r.path("/site/**").uri("http://localhost:8080/"))
                 .route("notes", r -> r.path("/notes/**").uri("http://localhost:8081/"))
                 .build();
     }
