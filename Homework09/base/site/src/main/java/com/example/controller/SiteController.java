@@ -2,7 +2,6 @@ package com.example.controller;
 
 import com.example.domain.Note;
 import com.example.service.SiteService;
-import jakarta.ws.rs.PathParam;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -10,11 +9,20 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+/**
+ * Контролёр запросов на сайт
+ */
 @Controller
 @RequestMapping("/site")
 @RequiredArgsConstructor
 public class SiteController {
     public final SiteService siteService;
+
+    /**
+     * Главная страница
+     * @param model
+     * @return
+     */
     @GetMapping
     public String home(Model model) {
         List<Note> notes = siteService.getNoteList();
@@ -22,11 +30,22 @@ public class SiteController {
         return "index";
     }
 
+    /**
+     * Страница создание новой заметки
+     * @param model
+     * @return
+     */
     @GetMapping("/add")
     public String add(Model model) {
         return "note";
     }
 
+    /**
+     * Редактирование заметки
+     * @param id
+     * @param model
+     * @return
+     */
     @GetMapping("/add/{id}")
     public String add(@PathVariable int id, Model model) {
         Note note = siteService.getNote(id);
@@ -36,6 +55,13 @@ public class SiteController {
         return "note";
     }
 
+    /**
+     * Изменение заметки
+     * @param id
+     * @param title
+     * @param text
+     * @return
+     */
     @PostMapping("/push")
     public String push(@RequestParam("note_id") String id,
                        @RequestParam("note_title") String title,
@@ -44,11 +70,19 @@ public class SiteController {
         return "redirect:http://localhost:8765/site";
     }
 
+    /**
+     * Файлы стилей
+     * @return
+     */
     @GetMapping("/css/**")
     public String css() {
         return "../static/css/style.css";
     }
 
+    /**
+     * Скрипты JS
+     * @return
+     */
     @GetMapping("/js/**")
     public String js() {
         return "../static/js/script1.js";
