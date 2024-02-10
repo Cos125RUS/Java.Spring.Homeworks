@@ -16,10 +16,14 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.BDDMockito.given;
 
+/**
+ * Интекрационные тесты рест-контроллера заметок
+ */
 @SpringBootTest
 public class NoteControllerIntegrationTest {
     @MockBean
@@ -27,13 +31,16 @@ public class NoteControllerIntegrationTest {
     @Autowired
     public NoteController noteController;
 
+    /**
+     * Тест сохранения заметки
+     */
     @Test
-    public void noteControllerIntegrationTest() {
+    public void saveNoteTest() {
 //        given
         Note note1 = new Note("Title", "Content");
         given(noteRepository.save(note1)).willReturn(note1);
 //        when
-        Note saveNote = noteController.addNote(note1).getBody();
+        Note saveNote = noteController.addNote(Optional.of(note1).get()).getBody();
 //        then
         assertEquals(note1.getTitle(), Objects.requireNonNull(saveNote).getTitle());
         assertEquals(note1.getBody(), Objects.requireNonNull(saveNote).getBody());

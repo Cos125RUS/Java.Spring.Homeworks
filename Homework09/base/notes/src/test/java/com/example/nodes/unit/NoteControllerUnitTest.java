@@ -22,6 +22,9 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.BDDMockito.given;
 
+/**
+ * Юнит-тесты рест-контроллера заметок
+ */
 @ExtendWith(MockitoExtension.class)
 public class NoteControllerUnitTest {
     @Mock
@@ -35,7 +38,9 @@ public class NoteControllerUnitTest {
     public Note note2;
 
 
-
+    /**
+     * Инициализация параметров
+     */
     @BeforeEach
     public void init() {
         noteList = new ArrayList<>();
@@ -55,6 +60,9 @@ public class NoteControllerUnitTest {
         note2.setCreation(creation2);
     }
 
+    /**
+     * Запрос всех заметок из БД
+     */
     @Test
     public void findAllTest() {
 //        given
@@ -68,6 +76,9 @@ public class NoteControllerUnitTest {
         assertEquals(all.getBody().size(), 2);
     }
 
+    /**
+     * Добавление новой заметки
+     */
     @Test
     public void addNoteTest() {
 //        given
@@ -78,6 +89,9 @@ public class NoteControllerUnitTest {
         assertEquals(note1, saveNote);
     }
 
+    /**
+     * Поиск заметки по id
+     */
     @Test
     public void findByIdTest() {
 //        given
@@ -90,6 +104,9 @@ public class NoteControllerUnitTest {
         assertEquals(findNote.getBody(), note1);
     }
 
+    /**
+     * Обновление параметров заметки
+     */
     @Test
     public void updateByIdTest() {
         //        given
