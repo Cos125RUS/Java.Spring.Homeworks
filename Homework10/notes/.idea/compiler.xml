@@ -15,7 +15,10 @@
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="db" target="17" />
+      <module name="hw09" target="17" />
       <module name="nodes" target="17" />
+      <module name="notes (1)" target="17" />
+      <module name="notes (2)" target="17" />
       <module name="site1" target="17" />
     </bytecodeTargetLevel>
   </component>
@@ -26,6 +29,7 @@
       <module name="eureka" options="-parameters" />
       <module name="nodes" options="-parameters" />
       <module name="notes" options="-parameters" />
+      <module name="notes (1)" options="-parameters" />
       <module name="site" options="-parameters" />
       <module name="site1" options="-parameters" />
     </option>

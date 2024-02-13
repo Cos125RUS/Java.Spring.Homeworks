@@ -8,13 +8,10 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
-import org.junit.jupiter.params.provider.ValueSource;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.ui.Model;
-import org.springframework.ui.ModelMap;
-import org.springframework.web.method.annotation.ModelFactory;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
@@ -28,7 +25,7 @@ import static org.mockito.Mockito.verify;
  * Юнит-тесты контроллера сайта
  */
 @ExtendWith(MockitoExtension.class)
-public class SiteControllerTest {
+public class SiteControllerMethodTest {
     @Mock
     public SiteService siteService;
     @Mock
