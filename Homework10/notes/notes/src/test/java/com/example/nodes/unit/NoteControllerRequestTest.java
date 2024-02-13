@@ -81,6 +81,5 @@ public class NoteControllerRequestTest {
                 .andExpect(jsonPath("$[0].body", is(note1.getBody())))
                 .andExpect(jsonPath("$[1].title", is(note2.getTitle())))
                 .andExpect(jsonPath("$[1].body", is(note2.getBody())));
-
     }
 }
