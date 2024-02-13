@@ -39,5 +39,8 @@ public class NoteJpaTest {
 
         // then
         assertEquals(found.getId(), note.getId());
+        assertEquals(found.getTitle(), note.getTitle());
+        assertEquals(found.getBody(), note.getBody());
+        assertEquals(found.getCreation(), note.getCreation());
     }
 }
