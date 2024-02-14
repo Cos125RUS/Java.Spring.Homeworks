@@ -2,12 +2,14 @@ package com.example.controller;
 
 import com.example.domain.Note;
 import com.example.service.SiteService;
+import io.micrometer.core.instrument.Timer;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.concurrent.atomic.AtomicReference;
 
 /**
  * Контролёр запросов на сайт
@@ -17,9 +19,11 @@ import java.util.List;
 @RequiredArgsConstructor
 public class SiteController {
     public final SiteService siteService;
+    private final Timer timer;
 
     /**
      * Главная страница
+     *
      * @param model
      * @return
      */
@@ -32,6 +36,7 @@ public class SiteController {
 
     /**
      * Страница создание новой заметки
+     *
      * @param model
      * @return
      */
@@ -42,21 +47,24 @@ public class SiteController {
 
     /**
      * Редактирование заметки
+     *
      * @param id
      * @param model
      * @return
      */
     @GetMapping("/add/{id}")
     public String add(@PathVariable int id, Model model) {
-        Note note = siteService.getNote(id);
-        model.addAttribute("id", note.getId());
-        model.addAttribute("text", note.getBody());
-        model.addAttribute("title", note.getTitle());
+        AtomicReference<Note> note = new AtomicReference<>();
+        timer.record(() -> note.set(siteService.getNote(id)));
+        model.addAttribute("id", note.get().getId());
+        model.addAttribute("text", note.get().getBody());
+        model.addAttribute("title", note.get().getTitle());
         return "note";
     }
 
     /**
      * Изменение заметки
+     *
      * @param id
      * @param title
      * @param text
@@ -66,12 +74,13 @@ public class SiteController {
     public String push(@RequestParam("note_id") String id,
                        @RequestParam("note_title") String title,
                        @RequestParam("text") String text) {
-        siteService.save(id, title, text);
+        timer.record(() -> siteService.save(id, title, text));
         return "redirect:http://localhost:8765/site";
     }
 
     /**
      * Файлы стилей
+     *
      * @return
      */
     @GetMapping("/css/**")
@@ -81,6 +90,7 @@ public class SiteController {
 
     /**
      * Скрипты JS
+     *
      * @return
      */
     @GetMapping("/js/**")

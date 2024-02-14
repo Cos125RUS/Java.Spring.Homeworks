@@ -2,6 +2,8 @@ package com.example.nodes.controller;
 
 import com.example.nodes.domain.Note;
 import com.example.nodes.repository.NoteRepository;
+import io.micrometer.core.instrument.Counter;
+import io.micrometer.core.instrument.MeterRegistry;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -19,6 +21,7 @@ import java.util.List;
 @RequestMapping("/notes")
 public class NoteController {
     private final NoteRepository noteRepository;
+    private final Counter counter;
 
     /**
      * Добавить заметку
@@ -28,6 +31,7 @@ public class NoteController {
     @PostMapping
     public ResponseEntity<Note> addNote(@RequestBody Note note) {
         note.setCreation(LocalDateTime.now());
+        counter.increment();
         return new ResponseEntity<>(noteRepository.save(note), HttpStatus.CREATED);
     }
 
