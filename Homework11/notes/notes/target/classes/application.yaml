@@ -1,0 +1,19 @@
+server:
+  port:
+    8081
+
+spring:
+  application:
+    name:
+      notes
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  metrics:
+    export:
+      prometheus:
+        enable: true
+
