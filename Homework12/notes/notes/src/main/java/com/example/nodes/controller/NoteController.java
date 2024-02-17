@@ -1,28 +1,22 @@
 package com.example.nodes.controller;
 
 import com.example.nodes.domain.Note;
-import com.example.nodes.repository.NoteRepository;
-import com.example.nodes.service.FileGateway;
-import com.example.nodes.service.NoteService;
-import io.micrometer.core.instrument.Counter;
-import io.micrometer.core.instrument.MeterRegistry;
+import com.example.nodes.service.CRUDNoteService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
-import java.time.LocalDateTime;
 import java.util.List;
 
 /**
- * Ну, это наш рест контролёр
+ * Контролёр заметок
  */
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/notes")
 public class NoteController {
-    private final NoteService noteService;
+    private final CRUDNoteService noteService;
 
     /**
      * Добавить заметку

@@ -15,7 +15,7 @@ import java.util.List;
  */
 @Service
 @RequiredArgsConstructor
-public class NoteService {
+public class NoteService implements CRUDNoteService {
     private final NoteRepository noteRepository;
     private final Counter counter;
     private final FileGateway fileGateway;
