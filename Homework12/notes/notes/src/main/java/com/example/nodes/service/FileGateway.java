@@ -13,7 +13,7 @@ public interface FileGateway {
     /**
      * Запись данных в канал интеграции
      * @param filename
-     * @param data
+     * @param note
      */
     void writeToFile(@Header(FileHeaders.FILENAME) String filename, Note note);
 }

@@ -1,6 +1,7 @@
 package com.example.service;
 
 import com.example.domain.Note;
+import com.example.domain.NoteFactory;
 import io.micrometer.core.instrument.Timer;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.*;
@@ -68,7 +69,7 @@ public class SiteService implements NoteUsingService {
             headers.setAccept(List.of(MediaType.APPLICATION_JSON));
             String url = "http://localhost:8765/notes";
             HttpMethod method;
-            Note note = new Note(title, text);
+            Note note = NoteFactory.createNote(title, text);
             if (!id.isEmpty()) {
                 long noteId = Long.parseLong(id);
                 note.setId(noteId);
